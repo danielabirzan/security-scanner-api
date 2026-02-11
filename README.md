@@ -1,143 +1,92 @@
 # 🔐 Security Scanner API
 
-> 🚧 **Status:** Active Development
+Mini-platform for URL security scanning with async processing.
 
-Mini-platform for URL security scanning - learning project.
-
-
-## 📋 Prerequisites
-
-- Python 3.11 or higher
-- Git
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-green.svg)](https://fastapi.tiangolo.com/)
 
 ---
 
-## 🚀 Quick Start (macOS M1)
-
+## 🚀 Quick Start
 ```bash
-# Clone & setup
+# Setup
 git clone https://github.com/danielabirzan/security-scanner-api.git
 cd security-scanner-api
-
-# Create virtual environment
 python3 -m venv venv
 source venv/bin/activate
+make install
 
-# Install dependencies
-pip install --upgrade pip
-pip install -r requirements.txt
-
-# Configure environment
+# Configure application
 cp .env.example .env
 
-# Run development server
-uvicorn app.main:app --reload
-
-# API Docs: http://localhost:8000/docs
+# Run
+make run
+# Docs:
+#    - http://localhost:8000/docs
+#    -
 ```
 
 ---
 
-## 🎯 Features Roadmap
+## 🛠️ Development
+```bash
+make format    # Format code
+make fix       # Auto-fix all issues
+make lint      # Check quality
+make test      # Run tests
+make all       # Fix + lint + test
+make help           # Show all commands
+```
+---
 
-### Phase 1: Core API ✨
-- [x] Project setup with FastAPI
-- [x] Layered architecture (Controllers → Services → Repositories)
-- [ ] PostgreSQL integration with SQLAlchemy
-- [ ] Database migrations with Alembic
-- [ ] RESTful API design with proper HTTP status codes
+## 📁 Structure
+```
+app/
+├── api/v1/          # Endpoints
+├── services/        # Business logic
+├── repositories/    # Data access
+├── models/          # Database models
+├── schemas/         # Validation
+└── core/            # Config
+```
 
-### Phase 2: Security & Authentication 🔒
+**Architecture:** Controllers → Services → Repositories → Database
 
-### Phase 3: Scanning Feature 🔍
+---
 
-### Phase 4: Async Processing ⚡
+## 🎯 Roadmap
 
-### Phase 5: Containerization 🐳
-
-### Phase 6: Orchestration ☸️
-
-### Phase 7: Production Ready 📊
+- [x] FastAPI setup
+- [x] Code quality tools
+- [ ] PostgreSQL + migrations
+- [ ] Authentication (JWT)
+- [ ] Scanning features
+- [ ] Async tasks (Celery)
+- [ ] Docker + Kubernetes
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **FastAPI** - Web framework
-- **PostgreSQL** - Database
-- **SQLAlchemy** - ORM
-- **RabbitMQ + Celery** - Async tasks
-- **Docker + Kubernetes** - Deployment
+FastAPI • PostgreSQL • SQLAlchemy • RabbitMQ • Celery • Docker • Kubernetes
 
 ---
 
-## 📁 Project Structure
+## 📖 Docs
 
-```
-security-scanner-api/
-├── app/
-│   ├── api/v1/          # Controllers (API endpoints)
-│   ├── services/        # Business logic
-│   ├── repositories/    # Data access layer
-│   ├── models/          # Database models (SQLAlchemy)
-│   ├── schemas/         # Pydantic schemas (validation)
-│   ├── core/            # Config & dependencies
-│   ├── database.py      # Database connection
-│   └── main.py          # FastAPI app initialization
-├── tests/               # Test suite
-├── docker/              # Dockerfiles
-├── kubernetes/          # K8s manifests
-├── migrations/          # Alembic migrations
-├── scripts/             # Utility scripts
-├── requirements.txt     # Python dependencies
-├── .env.example         # Environment template
-└── README.md
-```
+- **API Docs:** http://localhost:8000/docs
+- **Health:** http://localhost:8000/health
 
 ---
 
-## 🏗️ Architecture
-
-**Layered Architecture Pattern:**
-
+## 🧪 Testing
+```bash
+make test                              # All tests
+pytest tests/test_scans.py            # Specific file
+pytest --cov=app --cov-report=html    # Coverage report
 ```
-Client Request
-      ↓
-┌─────────────────┐
-│   Controllers   │  ← API endpoints (HTTP handling)
-└────────┬────────┘
-         ↓
-┌─────────────────┐
-│    Services     │  ← Business logic
-└────────┬────────┘
-         ↓
-┌─────────────────┐
-│  Repositories   │  ← Data access
-└────────┬────────┘
-         ↓
-┌─────────────────┐
-│  Database (ORM) │  ← PostgreSQL
-└─────────────────┘
-```
----
 
-## 🎓 Learning Goals
+## 📧 Contact
 
-This project demonstrates:
-- ✅ Clean Architecture (layered design)
-- ✅ RESTful API design
-- ✅ Async processing (Celery/RabbitMQ)
-- ✅ Database design & migrations
-- ✅ JWT authentication
-- ✅ Containerization (Docker)
-- ✅ Orchestration (Kubernetes)
-- ✅ Testing & CI/CD
-
----
-
-## 📖 API Documentation
-
-Interactive docs available at:
-- **Swagger UI (Interactive):** [http://localhost:8000/docs](http://localhost:8000/docs)  
-
-- **Redoc (Read-Only, Clean Docs):** [http://localhost:8000/redoc](http://localhost:8000/redoc) 
+- GitHub: [@danielabirzan](https://github.com/danielabirzan)
+- Email: birzandaniela@gmail.com
