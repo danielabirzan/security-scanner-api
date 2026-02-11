@@ -15,7 +15,9 @@ class Scan(BaseModel):
 
 
 @router.get("/", response_model=list[Scan])
-def list_scans(limit: int = Query(10, ge=1, le=100), offset: int = Query(0, ge=0)) -> list[Scan]:
+def list_scans(
+    limit: int = Query(10, ge=1, le=100), offset: int = Query(0, ge=0)
+) -> list[Scan]:
     """Scan model representing a security scan job."""
     # TODO: replace with real data store access
     return []

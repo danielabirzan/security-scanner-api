@@ -14,7 +14,9 @@ app = FastAPI(
 # Include routers
 app.include_router(info.router, prefix=f"{settings.API_V1_PREFIX}", tags=["info"])
 
-app.include_router(scans.router, prefix=f"{settings.API_V1_PREFIX}/scans", tags=["scans"])
+app.include_router(
+    scans.router, prefix=f"{settings.API_V1_PREFIX}/scans", tags=["scans"]
+)
 
 
 @app.get("/health")
