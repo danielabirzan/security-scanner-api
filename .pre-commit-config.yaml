@@ -4,6 +4,7 @@ repos:
     rev: v2.2.1
     hooks:
       - id: autoflake
+        exclude: ^migrations/
         args:
           - --in-place
           - --remove-all-unused-imports
@@ -16,6 +17,7 @@ repos:
     rev: v0.1.15
     hooks:
       - id: ruff
+        exclude: ^migrations/
         args: [--fix, --exit-non-zero-on-fix]
 
   # Code formatting
@@ -23,12 +25,14 @@ repos:
     rev: 24.1.1
     hooks:
       - id: black
+        exclude: ^migrations/
         language_version: python3.13
 
   - repo: https://github.com/pycqa/isort
     rev: 5.13.2
     hooks:
       - id: isort
+        exclude: ^migrations/
 
   # Type checking
   - repo: https://github.com/pre-commit/mirrors-mypy

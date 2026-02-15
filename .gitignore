@@ -25,6 +25,13 @@ ENV/
 # Logs
 *.log
 
+# Tests and coverage
+.coverage
+htmlcov/
+
+# Personal
+personal_notes/
+
 # OS
 .DS_Store
 Thumbs.db
