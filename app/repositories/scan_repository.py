@@ -30,15 +30,31 @@ class ScanRepository:
         """Get all scans with pagination."""
         return self.db.query(Scan).offset(skip).limit(limit).all()
 
-    def update_status(
-        self, scan_id: int, status: ScanStatus, error_message: Optional[str] = None
+    def update(
+        self,
+        scan_id: int,
+        status: Optional[ScanStatus] = None,
+        error_message: Optional[str] = None,
+        results: Optional[dict] = None,
     ) -> Optional[Scan]:
-        """Update scan status."""
+        """Update scan details."""
         scan = self.get_by_id(scan_id)
         if scan:
-            scan.status = status
-            if error_message:
+            if status is not None:
+                scan.status = status
+            if error_message is not None:
                 scan.error_message = error_message
+            if results is not None:
+                scan.results = results
             self.db.commit()
             self.db.refresh(scan)
         return scan
+
+    def delete(self, scan_id: int) -> bool:
+        """Delete scan by ID."""
+        scan = self.get_by_id(scan_id)
+        if scan:
+            self.db.delete(scan)
+            self.db.commit()
+            return True
+        return False

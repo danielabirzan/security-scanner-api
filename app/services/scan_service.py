@@ -26,8 +26,18 @@ class ScanService:
         """List all scans with pagination."""
         return self.scan_repo.get_all(skip, limit)
 
-    def update_scan_status(
-        self, scan_id: int, status: ScanStatus, error_message: Optional[str] = None
+    def update_scan(
+        self,
+        scan_id: int,
+        status: Optional[ScanStatus] = None,
+        error_message: Optional[str] = None,
+        results: Optional[dict] = None,
     ) -> Optional[Scan]:
-        """Update scan status."""
-        return self.scan_repo.update_status(scan_id, status, error_message)
+        """Update scan details."""
+        return self.scan_repo.update(
+            scan_id, status=status, error_message=error_message, results=results
+        )
+
+    def delete_scan(self, scan_id: int) -> bool:
+        """Delete scan by ID."""
+        return self.scan_repo.delete(scan_id)

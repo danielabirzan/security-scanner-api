@@ -25,3 +25,11 @@ class ScanResponse(BaseModel):
     error_message: Optional[str] = None
     results: Optional[dict] = None
     created_at: datetime
+
+
+class ScanUpdate(BaseModel):
+    """Schema for updating scan."""
+
+    status: Optional[ScanStatus] = None
+    error_message: Optional[str] = None
+    results: Optional[dict] = None

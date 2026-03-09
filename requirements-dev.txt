@@ -4,7 +4,7 @@ isort==5.13.2
 ruff==0.1.15
 mypy==1.8.0
 types-requests==2.31.0
-sqlalchemy[mypy]==2.0.25
+sqlalchemy[mypy]>=2.0.36
 pre-commit==3.6.0
 
 # Auto-fix tools
