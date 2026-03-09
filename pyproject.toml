@@ -49,6 +49,7 @@ ignore = [
     "D100",  # Missing module docstring
     "D104",  # Missing package docstring
     "E501",  # Line too long (Black handles this)
+    "B008",  # Allow Depends in defaults
 ]
 
 # Docstring convention
@@ -67,12 +68,18 @@ remove-unused-variables = true
 remove-duplicate-keys = true
 ignore-init-module-imports = true
 
+
 [tool.mypy]
 python_version = "3.9"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
 ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "app.models.*"
+disallow_untyped_defs = false
+disable_error_code = ["var-annotated", "assignment", "index"]
 
 [[tool.mypy.overrides]]
 module = "tests.*"

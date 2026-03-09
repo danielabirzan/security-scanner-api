@@ -24,7 +24,7 @@ lint:
 test:
 	pytest $(TEST_DIR) -v --cov=$(APP_DIR) --cov-report=html --cov-report=term
 
-all: fix lint test
+all: format fix lint test
 
 run:
 	uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
